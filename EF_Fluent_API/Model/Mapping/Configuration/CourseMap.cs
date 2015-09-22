@@ -22,8 +22,7 @@ namespace EF_Fluent_API.Model.Mapping.Configuration
 
             //one-to-many
             HasOptional(p => p.Department)
-            .WithMany(p => p.Courses)
-            .HasForeignKey(p => p.DepartmentID);            
+            .WithMany(p => p.Courses);                 
 
            ToTable("dbo.Course");
 

@@ -18,7 +18,7 @@ namespace EF_Fluent_API.Model.Mapping.Context
         public DbSet<DepartmentModel> Departments { get; set; }
         public DbSet<InstructorModel> Instructors { get; set; }
         public DbSet<OfficeAssignmentModel> OfficeAssignments { get; set; }
-
+        
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             // Configure Code First to ignore PluralizingTableName convention 
@@ -29,6 +29,17 @@ namespace EF_Fluent_API.Model.Mapping.Context
             modelBuilder.Configurations.Add(new CourseMap());
             modelBuilder.Configurations.Add(new InstructorMap());
             modelBuilder.Configurations.Add(new OfficeAssignmentMap());
+            
+            //one-to-many
+            modelBuilder.Entity<InstructorModel>()
+                   .HasMany<CourseModel>(s => s.Courses)
+                   .WithMany(c => c.Instructors)
+                   .Map(cs =>
+                   {
+                       cs.MapLeftKey("InstructorID");
+                       cs.MapRightKey("CourseID");
+                       cs.ToTable("dbo.InstructorCourse");
+                   });
         }
     } 
 }

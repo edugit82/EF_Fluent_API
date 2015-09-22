@@ -21,19 +21,9 @@ namespace EF_Fluent_API.Model.Mapping.Configuration
             Property(p => p.HireDate).HasColumnName("HireDate");
 
             //One-to-Zero-or-One
-            HasOptional(p => p.OfficeAssignment)
-           .WithRequired(p => p.Instructor);
-
-            //Many-to-Many
-            HasMany<CourseModel>(p => p.Courses)
-           .WithMany(p => p.Instructors)
-           .Map(p =>
-             {
-                 p.MapLeftKey("InstrutorID");
-                 p.MapRightKey("CourseID");
-                 p.ToTable("InstrutorCourse");
-             });            
-
+             HasOptional(p => p.OfficeAssignment)
+            .WithRequired(p => p.Instructor);
+            
             ToTable("dbo.Instructor");
         }
     }

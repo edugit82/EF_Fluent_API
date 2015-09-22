@@ -19,12 +19,7 @@ namespace EF_Fluent_API.Model.Mapping.Configuration
             Property(p => p.Name).HasColumnName("Name");
             Property(p => p.Budget).HasColumnName("Budget");
             Property(p => p.StartDate).HasColumnName("StartDate");
-            Property(p => p.Administrator).HasColumnName("Administrator");
-
-            //one-to-many
-            HasMany(p => p.Courses)
-           .WithOptional(p => p.Department)
-           .HasForeignKey(p => p.DepartmentID);
+            Property(p => p.Administrator).HasColumnName("Administrator");            
             
             ToTable("dbo.Department");
         }

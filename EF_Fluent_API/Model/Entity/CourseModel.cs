@@ -5,10 +5,11 @@ namespace EF_Fluent_API.Model.Entity
 {
     public class CourseModel
     {
-        public CourseModel()
+        public CourseModel() 
         {
             this.Instructors = new HashSet<InstructorModel>();
         }
+        
         // Primary key 
         public int CourseID { get; set; }
 
@@ -16,10 +17,11 @@ namespace EF_Fluent_API.Model.Entity
         public int Credits { get; set; }
 
         // Foreign key 
-        public int DepartmentID { get; set; }
+        public int? DepartmentID { get; set; }
+        public int? InstructorCourseID { get; set; }
 
         // Navigation properties        
         public virtual DepartmentModel Department { get; set; }
-        public virtual ICollection<InstructorModel> Instructors { get; private set; }
+        public virtual ICollection<InstructorModel> Instructors { get; set; }
     } 
 }

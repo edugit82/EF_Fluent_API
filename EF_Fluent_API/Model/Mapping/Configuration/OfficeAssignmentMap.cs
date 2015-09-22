@@ -12,10 +12,8 @@ namespace EF_Fluent_API.Model.Mapping.Configuration
 
             Property(p => p.Location).HasColumnName("Location");
             Property(p => p.Timestamp).HasColumnName("Timestamp");
-
-            HasOptional(p => p.Instructor)
-            .WithRequired(p => p.OfficeAssignment);
-
+            
+            
             ToTable("dbo.OfficeAssignment");           
         }
     }
