@@ -21,8 +21,8 @@ namespace EF_Fluent_API.Model.Mapping.Context
         
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            // Configure Code First to ignore PluralizingTableName convention 
-            // If you keep this convention then the generated tables will have pluralized names. 
+            Database.SetInitializer<SchoolEntities>(null);
+            base.OnModelCreating(modelBuilder);
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
 
             modelBuilder.Configurations.Add(new DepartmentMap());
